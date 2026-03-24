@@ -1,16 +1,39 @@
-# React + Vite
+🛒 KHARIDO - AI-Powered Full Stack E-Commerce Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Full Stack & AI-Based E-Commerce Store
 
-Currently, two official plugins are available:
+KHARIDO is a modern full-stack e-commerce web application powered by Django + React and enhanced with Generative AI features. It provides a seamless shopping experience with intelligent recommendations and scalable architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
+🔐 User Authentication (Login / Signup)
+🛍️ Product Browsing & Search
+🛒 Add to Cart & Order Management
+💳 Secure Checkout System
+📦 Order Tracking
+🤖 AI-Based Product Recommendations
+🧠 Generative AI Features (smart suggestions / chatbot ready)
+⚡ Fast & Responsive UI with Tailwind CSS
+🧱 Tech Stack
+Frontend
+React.js
+Tailwind CSS
+JavaScript
+Backend
+Django
+Django REST Framework
+Database
+PostgreSQL
+AI Integration
+Generative AI APIs (for recommendations / smart features)
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+KHARIDO/
+│
+├── frontend/          # React + Tailwind UI
+├── backend/           # Django backend
+│   ├── api/           # APIs
+│   ├── models/        # Database models
+│   ├── views/         # Business logic
+│
+├── database/          # PostgreSQL configs
+├── ai_features/       # AI modules (recommendation/chat)
+└── README.md
