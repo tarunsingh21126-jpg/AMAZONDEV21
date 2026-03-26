@@ -134,7 +134,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
-import CartPage from "./CartPage";
+
 
 function ProductDetail() {
 

@@ -12,7 +12,7 @@ const Footer = () => {
         {/*<div class="foot-panel1 border">
                 <a href="" style="text-decoration:none; color: aliceblue;">BACK TO TOP</a>
             </div>*/}
-        <div class="foot-panel2">
+        <div className="bg-[#222f3d] text-white h-[250px] flex justify-evenly">
           <ul>
             <p>Get to Know Us</p>
             <a>About Amazon</a>
@@ -48,16 +48,16 @@ const Footer = () => {
             <a>Help</a>
           </ul>
         </div>
-        <div class="foot-panel3">
-          <div class="logo"></div>
+        <div classname="foot-panel3 bg-[#222f3d] text-white h-[200px] flex flex-col justify-center items-center border-b-2 border-white w-full">
+          <div classname="logo"></div>
         </div>
-        <div class="foot-panel4">
-          <div class="pages">
+        <div classname=" bg-gray-900 text-white  h-8 text-0.7rem ">
+          <div classname="pages pt-6">
             <a>Conditions to use</a>
             <a>privacy notice</a>
             <a>your ads privacy choices</a>
           </div>
-          <div class="copyright">
+          <div classname="bg-gray-900 text-[0.7rem]">
             © 1996-2024, KHARIDO.com, Inc. or its affiliates
           </div>
         </div>

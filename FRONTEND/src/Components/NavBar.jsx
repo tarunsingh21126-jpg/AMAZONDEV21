@@ -6,19 +6,19 @@ function NavBar() {
     const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     return (
         <>
-            <nav className="bg-white shadow-md px-6 py-3 flex justify-between   items-center fixed w-full top-0 z-50">
-                <Link to='/' className="text-2xl font-bold text-gray-600" >
+            <nav className=" fixed top-0  left-0 w-full h-[60px] bg-[#0f1111] text-white flex items-center justify-evenly">
+                <Link to='/' className="text-2xl font-bold text-white" >
                     <i class="fa-solid fa-list">SHOPIFY</i>
 
                 </Link>
-                <div class="nav-address border">
-                    <p class="ad-fst">Deliver to</p>
-                    <div class="add-icon">
+                <div class="nav-address bordertext-[#ebe0e0] text-sm ml-5">
+                    <p class="ad-fst text-base ml-[1px]">Deliver to</p>
+                    <div class="add-icon flex items-center">
                         <i class="fa-solid fa-location-crosshairs"></i>
                         <p class="ad-sec">INDIA</p>
                     </div>
                 </div>
-                <div class="nav-search">
+                <div class="nav-search ">
                     <select class="search-select">
                         <option>ALL</option>
                         <option>PERSONAL CARE</option>
@@ -36,39 +36,41 @@ function NavBar() {
                         <i class="fa-brands fa-searchengin"></i>
                     </div>
                 </div>
-                <Link to='/CART' className="relative hover:text-gray-600 text-gray-800 font-medium" >
+                <Link to='/CART' className="no-underline relative hover:text-gray-600 text-white font-medium w-10 " >
                     <i class="fa-solid fa-cart-plus"></i>CART
                     {cartCount > 0 && (
                         <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">{cartCount}</span>
                     )}
                 </Link>
             </nav>
-            <nav>
-                <div className=" flex text-align-center cursor-pointer font-semibold">
+             <nav className="sticky top-[60px] z-30 bg-[#232f3e] text-white text-sm">
+                <div className="max-w-7xl mx-auto flex items-center px-4 h-[60px] gap-9">
+                <div className="no-underline hover:bg-white/10 px-2 py-1 rounded">
                     <p>Customer Service</p>
                 </div>
-                <div class="deals border">
+                <div classname="no-underline hover:bg-white/10 px-2 py-1 rounded">
                     <p>Today's Deals</p>
                 </div>
-                <div class="gift cards border">
+                <div classname="no-underline hover:bg-white/10 px-2 py-1 rounded">
                     <p>Gift Cards</p>
                 </div>
-                <div class="Sell border">
+                <div classname="Sell border no-underline hover:bg-white/10 px-2 py-1 rounded">
                     <p>SELL</p>
                 </div>
-                <div class="panel-deals border">
+                <div classname="panel-deals border">
                     Shop deals in Electronics
                 </div>
-                <div class="gift cards border">
+                <div classname="gift cards border">
                     <p>Fresh</p>
                 </div>
-                <div class="gift cards border">
+                <div classname="gift cards border">
                     <p>Bestsellers</p>
                 </div>
-                <div class="Sell border">
+                <div classname="Sell border">
                     Amazon Pay
                 </div>
-            </nav>
+                </div>
+            </nav> 
         </>
     )
 }

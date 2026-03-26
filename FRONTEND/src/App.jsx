@@ -5,6 +5,7 @@ import ProductDetail from "./Pages/ProductDetail";
 import NavBar from "./Components/NavBar";
 import CartPage from "./Pages/CartPage";
 import { CartProvider } from "./Context/CartContext";
+import Footer from "./Components/layout/Footer";
    export default function App() {
      return (
       <CartProvider>
@@ -15,6 +16,7 @@ import { CartProvider } from "./Context/CartContext";
                <Route path="/product/:id" element={<ProductDetail />}  />
                <Route path="/cart" element={<CartPage />} />
           </Routes>
+          <Footer />
         </Router>
       </CartProvider>
      )

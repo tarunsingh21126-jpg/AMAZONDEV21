@@ -53,7 +53,7 @@ def update_cart_quantity(request):
         return Response({'error': 'item_id and quantity are required'}, status=400)
     try:
         item = CartItem.objects.get(id=item_id)
-        if int(quantity) <= 0:
+        if int(quantity) < 1:
             item.delete()
             return Response({'error': 'Quantity must be greater than zero'}, status=400)
         item.quantity = quantity
