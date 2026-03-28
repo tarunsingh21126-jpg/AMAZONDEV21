@@ -77,6 +77,10 @@ export const CartProvider = ({ children }) => {
       console.error("Error adding to cart:", error);
     }
   }
+  const clearCart = ()=>{
+    setCartItems([]);
+    setTotal(0);
+  }
   return (
     <CartContext.Provider
       value={{
@@ -84,7 +88,8 @@ export const CartProvider = ({ children }) => {
         total,
         addToCart,
         removeFromCart,
-        updateQuantity
+        updateQuantity,
+        clearCart
       }}
     >
       {children}
