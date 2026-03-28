@@ -6,6 +6,7 @@ import NavBar from "./Components/NavBar";
 import CartPage from "./Pages/CartPage";
 import { CartProvider } from "./Context/CartContext";
 import Footer from "./Components/layout/Footer";
+import CheckoutPage from "./Pages/Checkout";
    export default function App() {
      return (
       <CartProvider>
@@ -15,6 +16,7 @@ import Footer from "./Components/layout/Footer";
               <Route path="/" element={<ProductList />}  />
                <Route path="/product/:id" element={<ProductDetail />}  />
                <Route path="/cart" element={<CartPage />} />
+               <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
           <Footer />
         </Router>

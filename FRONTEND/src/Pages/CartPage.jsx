@@ -1,25 +1,26 @@
 import { useCart } from "../Context/CartContext";
+import { Link } from "react-router-dom";
 
 function CartPage() {
-    const { cartItems,total, removeFromCart, updateQuantity} = useCart();
+    const { cartItems, total, removeFromCart, updateQuantity } = useCart();
     const BASEURL = import.meta.env.VITE_DJANGO_BASE_URL;
-    console.log("Cart Items:",cartItems);
-   
+    console.log("Cart Items:", cartItems);
+
     return (
-        <div className="pt-20 min-h-screen bg-gray-100 p-8 m-2"> 
+        <div className="pt-20 min-h-screen bg-gray-100 p-8 m-2">
             <h1 className="text-3xl font-bold mb-4 text-center">YOUR CART</h1>
-            {cartItems.length ===0 ? (
+            {cartItems.length === 0 ? (
                 <p className="text-center text-gray-600">YOUR CARRT IS EMPTY</p>
-            ):(
+            ) : (
                 <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
                     {cartItems.map((item) => (
                         <div key={item.id} className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-4">
-                              {item.product_image && (
-                                <img src={item.product_image}
-                                alt={item.product_name}
-                                className="w-20 h-20 object-cover rounded" />
-                              )}
+                                {item.product_image && (
+                                    <img src={item.product_image}
+                                        alt={item.product_name}
+                                        className="w-20 h-20 object-cover rounded" />
+                                )}
                             </div>
                             <div>
                                 <h2 className="text-lg font-semibold">{item.product_name}</h2>
@@ -30,21 +31,21 @@ function CartPage() {
 
                             <div className="flex items-center gap-3">
                                 <button className="bg-gray-300 px-3 py-1 rounded" onClick={
-                                    ()=> updateQuantity(
+                                    () => updateQuantity(
                                         item.id,
-                                        item.quantity -1 
+                                        item.quantity - 1
                                     )
-                                } > - 
+                                } > -
                                 </button>
 
                                 <span>{item.quantity}</span>
-                                <button className="bg-gray-300 px-3 py-1 rounded" onClick={()=>
+                                <button className="bg-gray-300 px-3 py-1 rounded" onClick={() =>
                                     updateQuantity(
                                         item.id,
-                                        item.quantity +1 
+                                        item.quantity + 1
                                     )
                                 } > + </button>
-                                <button className="text-red-500" onClick={()=> removeFromCart(item.id)}
+                                <button className="text-red-500" onClick={() => removeFromCart(item.id)}
                                 > REMOVE</button>
                             </div>
 
@@ -55,10 +56,14 @@ function CartPage() {
                     <div className="border-t pt-4 mt-4 flex justify-between items-center">
                         <h2 className="text-xl font-bold">TOTAL:</h2>
                         <p className="text-xl font-semibold">${total.toFixed(2)}</p>
-                    </div>
+                        <Link to="/checkout" className="bg-blue-600 text-white">
+                        Proceed to checkout
+                    </Link>
                 </div>
-            )}
-        </div>
+                 </div>
+    )
+}
+        </div >
     )
 }
 
