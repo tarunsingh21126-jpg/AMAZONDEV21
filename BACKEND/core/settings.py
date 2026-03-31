@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(default='postgresql://amazondb21_user:bjhfCsg3PvzGmqDnOWsmyMeqEntATwAc@dpg-d743lpp5pdvs7380varg-a.virginia-postgres.render.com/amazondb21')
 }
 
 # Password validation
