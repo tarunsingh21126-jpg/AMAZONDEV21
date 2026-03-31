@@ -79,21 +79,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST'),
-#         'PORT': os.getenv('DB_PORT'),
-#     }
-# }
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://amazondb21_user:bjhfCsg3PvzGmqDnOWsmyMeqEntATwAc@dpg-d743lpp5pdvs7380varg-a.virginia-postgres.render.com/amazondb21')
-}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+ }
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgresql://amazondb21_user:bjhfCsg3PvzGmqDnOWsmyMeqEntATwAc@dpg-d743lpp5pdvs7380varg-a.virginia-postgres.render.com/amazondb21')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -139,7 +139,7 @@ STATICFILES_STORAGE =  'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = [
-    "http://localhost:3000",
+    "https://khharido.netlify.app","http://localhost:5173",
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
