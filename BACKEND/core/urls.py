@@ -19,7 +19,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    # path('create-admin/', create_admin),
+    path('create-admin/', create_admin),
     path('admin/', admin.site.urls),
     path('api/',include('store.urls')),
 ]
@@ -27,11 +27,11 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-# from django.http import HttpResponse
-# from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
-# def create_admin(request):
-#     if not User.objects.filter(username='admin').exists():
-#         User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
-#         return HttpResponse("Admin created")
-#     return HttpResponse("Already exists")
+def create_admin(request):
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
+        return HttpResponse("Admin created")
+    return HttpResponse("Already exists")
