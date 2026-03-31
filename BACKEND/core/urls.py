@@ -51,7 +51,7 @@ def create_admin_secure(request):
     return HttpResponse("Already exists 👍")
 
 urlpatterns = [
-    path('create-admin-secret/', create_admin_secure),  # 👈 yaha
+    
     path('admin/', admin.site.urls),
     path('api/', include('store.urls')),
 ]
