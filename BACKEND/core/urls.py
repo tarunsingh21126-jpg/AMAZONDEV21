@@ -14,24 +14,41 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path,include
-from django.conf import settings
-from django.conf.urls.static import static
-urlpatterns = [
-    path('create-admin/', create_admin),
-    path('admin/', admin.site.urls),
-    path('api/',include('store.urls')),
-]
+# from django.contrib import admin
+# from django.urls import path,include
+# from django.conf import settings
+# from django.conf.urls.static import static
+# urlpatterns = [
+  
+#     path('admin/', admin.site.urls),
+#     path('api/',include('store.urls')),
+# ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-def create_admin(request):
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
-        return HttpResponse("Admin created")
-    return HttpResponse("Already exists")
+User = get_user_model()
+
+def create_admin_secure(request):
+    # simple secret check (important)
+    if request.GET.get("key") != "mysecret123":
+        return HttpResponse("Unauthorized ❌")
+
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser(
+            username="admin",
+            email="admin@gmail.com",
+            password="admin123"
+        )
+        return HttpResponse("Admin created ✅")
+
+    return HttpResponse("Already exists 👍")
+
+urlpatterns = [
+    path('create-admin-secret/', create_admin_secure),  # 👈 yaha
+    path('admin/', admin.site.urls),
+    path('api/', include('store.urls')),
+]
