@@ -1,7 +1,7 @@
 // import AppRoutes from "./routes/AppRoutes";
-import ProductList from "./Pages/ProductList";
+// import ProductList from "./Pages/ProductList";
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
-import ProductDetail from "./Pages/ProductDetail";
+// import ProductDetail from "./Pages/ProductDetail";
 import NavBar from "./Components/NavBar";
 import CartPage from "./Pages/CartPage";
 import { CartProvider } from "./Context/CartContext";

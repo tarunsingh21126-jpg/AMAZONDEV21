@@ -152,7 +152,7 @@ function ProductCard({ product }) {
             <div className="flex text-yellow-500 text-sm">
               {"★".repeat(Math.floor(product.rating))}
               <span className="text-gray-300">
-                {"★".repeat(5 - Math.floor(product.rating))}
+                {"★".repeat(Math.max(0, 5 - Math.floor(product.rating)))}
               </span>
             </div>
             <span className="text-xs text-blue-600 hover:underline cursor-pointer">
