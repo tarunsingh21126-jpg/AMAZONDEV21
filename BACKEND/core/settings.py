@@ -91,9 +91,9 @@ DATABASES = {
  }
 # import dj_database_url
 
-DATABASES = {
-     'default': dj_database_url.config(default='postgresql://amazondb21_user:bjhfCsg3PvzGmqDnOWsmyMeqEntATwAc@dpg-d743lpp5pdvs7380varg-a.virginia-postgres.render.com/amazondb21')
-}
+# DATABASES = {
+#      'default': dj_database_url.config(default='postgresql://amazondb21_user:bjhfCsg3PvzGmqDnOWsmyMeqEntATwAc@dpg-d743lpp5pdvs7380varg-a.virginia-postgres.render.com/amazondb21')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
