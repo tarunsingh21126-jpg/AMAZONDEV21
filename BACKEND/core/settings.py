@@ -139,7 +139,7 @@ STATICFILES_STORAGE =  'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = [
-    "https://khharido.netlify.app","http://localhost:5173",
+    "https://khharido.netlify.app"
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
