@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
-
+import { clearToken,getAccessToken } from "../Utils/auth";
 function NavBar() {
     const { cartItems } = useCart();
+    const navigate = useNavigate();
     const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const isLoggedIn = !!getAccessToken();
+    const handleLogout = () => {
+        clearToken();
+        navigate("/Login");
+    };
     return (
         <>
             <nav className=" fixed top-0  left-0 w-full h-[60px] bg-[#0f1111] text-white flex items-center justify-evenly">
@@ -35,6 +41,22 @@ function NavBar() {
                     <div class="search-icon">
                         <i class="fa-brands fa-searchengin"></i>
                     </div>
+                </div>
+                <div className="flex items-center gap-6">
+                    {!isLoggedIn ? (
+                        <>
+                            <Link to ='/Login' className="no-underline hover:text-gray-600 text-white font-medium" >
+                                LOGIN
+                            </Link>
+                            <Link to ='/Signup' className="no-underline hover:text-gray-600 text-white font-medium" >
+                                SIGN UP
+                            </Link>
+                        </>
+                    ):(
+                        <button onClick={handleLogout} className="no-underline hover:text-gray-600 text-white font-medium" >
+                            LOGOUT
+                        </button>
+                    )}
                 </div>
                 <Link to='/CART' className="no-underline relative hover:text-gray-600 text-white font-medium w-10 " >
                     <i class="fa-solid fa-cart-plus"></i>CART

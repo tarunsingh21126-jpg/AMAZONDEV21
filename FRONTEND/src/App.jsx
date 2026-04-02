@@ -7,6 +7,9 @@ import CartPage from "./Pages/CartPage";
 import { CartProvider } from "./Context/CartContext";
 import Footer from "./Components/layout/Footer";
 import CheckoutPage from "./Pages/Checkout";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUP";
+import PrivateRouter from "./Components/PrivateRouter";
    export default function App() {
      return (
       <CartProvider>
@@ -16,7 +19,11 @@ import CheckoutPage from "./Pages/Checkout";
               <Route path="/" element={<ProductList />}  />
               <Route path="/product/:id" element={<ProductDetail />}  />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route element={<PrivateRouter />}>
+                <Route path="/checkout" element={<CheckoutPage />} />
+              </Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
           </Routes>
           <Footer />
         </Router>

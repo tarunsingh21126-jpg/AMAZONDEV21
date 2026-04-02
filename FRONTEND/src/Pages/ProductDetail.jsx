@@ -134,6 +134,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../Context/CartContext";
+import { authFetch } from "../Utils/auth";
 
 
 function ProductDetail() {
@@ -179,7 +180,14 @@ function ProductDetail() {
   if (!product) {
     return <div className="text-center py-20">NO PRODUCT FOUND</div>
   }
-
+  
+  const handleAddToCart = () => {
+    if(!localStorage.getItem("access_token")){
+      window.location.href = "/login";
+      return;
+    }
+    addToCart(product.id);
+  }
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6">
       <div className="mt-4">
@@ -221,7 +229,7 @@ function ProductDetail() {
                 {product.description}
               </p>
               <div className="flex gap-4">
-                <button onClick={()=>addToCart(product)} className="flex-1 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+                <button onClick={handleAddToCart} className="flex-1 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
                   ADD TO CART
                 </button>
                 <button  className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-300 transition">
