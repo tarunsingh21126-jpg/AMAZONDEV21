@@ -11,7 +11,7 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUP";
 import PrivateRouter from "./Components/PrivateRouter";
 import LoginSignup from "./Pages/LoginSignup";
-import Portfolio from "./Pages/Portfolio";
+// import Portfolio from "./Pages/Portfolio";
    export default function App() {
      return (
       <CartProvider>
@@ -27,7 +27,7 @@ import Portfolio from "./Pages/Portfolio";
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/AUTHUI" element={<LoginSignup />} />
-              <Route path="/Portfolio" element={<Portfolio />} />
+              {/* <Route path="/Portfolio" element={<Portfolio />} /> */}
           </Routes>
           <Footer />
         </Router>
