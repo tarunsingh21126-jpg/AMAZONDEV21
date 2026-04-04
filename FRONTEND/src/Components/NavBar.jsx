@@ -12,7 +12,7 @@ function NavBar() {
     };
     return (
         <>
-            <nav className=" fixed top-0  left-0 w-full h-[60px] bg-[#0f1111] text-white flex items-center justify-evenly">
+            <nav className=" fixed top-0  left-0 w-full h-[60px] bg-[#0f1111] text-white flex items-center justify-evenly max-w-7xl mx-auto px-4">
                 <Link to='/' className="text-2xl font-bold text-white" >
                     <i class="fa-solid fa-list">SHOPIFY</i>
 
@@ -58,6 +58,7 @@ function NavBar() {
                         </button>
                     )}
                 </div>
+
                 <Link to='/CART' className="no-underline relative hover:text-gray-600 text-white font-medium w-10 " >
                     <i class="fa-solid fa-cart-plus"></i>CART
                     {cartCount > 0 && (
@@ -82,6 +83,12 @@ function NavBar() {
                 <div classname="panel-deals border">
                     Shop deals in Electronics
                 </div>
+                <Link to= '/AUTHUI'classname="panel-deals border no-underline">
+                    AuthUI
+                </Link>
+                <Link to= '/Portfolio'classname=" border no-underline relative hover:text-gray-600 text-white font-medium w-10">
+                    PORTFOLIO
+                </Link>
                 <div classname="gift cards border">
                     <p>Fresh</p>
                 </div>
