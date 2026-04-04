@@ -94,126 +94,125 @@
 //       </div>
 //     </div>
 //   );
-// }import React, { useState, useEffect } from 'react';
-// import { Menu, X, Code2 } from 'lucide-react';
-// import { Button } from './Button';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Code2 } from 'lucide-react';
+import { Button } from './Button';
 
-// const Header = ({ activeSection, data }) => {
-//   const [isScrolled, setIsScrolled] = useState(false);
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header = ({ activeSection, data }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 50);
-//     };
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-//   const navItems = [
-//     { id: 'home', label: 'Home' },
-//     { id: 'about', label: 'About' },
-//     { id: 'skills', label: 'Skills' },
-//     { id: 'projects', label: 'Projects' },
-//     { id: 'experience', label: 'Experience' },
-//     { id: 'contact', label: 'Contact' }
-//   ];
+  const navItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'contact', label: 'Contact' }
+  ];
 
-//   const scrollToSection = (sectionId) => {
-//     const element = document.getElementById(sectionId);
-//     if (element) {
-//       const offset = 80;
-//       const elementPosition = element.getBoundingClientRect().top;
-//       const offsetPosition = elementPosition + window.pageYOffset - offset;
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-//       window.scrollTo({
-//         top: offsetPosition,
-//         behavior: 'smooth'
-//       });
-//     }
-//     setIsMobileMenuOpen(false);
-//   };
-//   return (
-//     <header
-//       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/95 backdrop-blur-md shadow-lg border-b border-slate-800' : 'bg-transparent'
-//         }`}
-//     >
-//       <nav className="container mx-auto px-6 py-4">
-//         <div className="flex items-center justify-between">
-//       <button
-//         onClick={() => scrollToSection('home')}
-//         className="flex items-center space-x-2 group">
-//         <div className="p-2 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-colors">
-//           <Code2 className="w-6 h-6 text-teal-400" />
-//         </div>
-//         <span className="text-xl font-bold text-white">{data.name.split(' ')[0]}</span>
-//       </button>
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/95 backdrop-blur-md shadow-lg border-b border-slate-800' : 'bg-transparent'
+        }`}
+    >
+      <nav className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+      <button
+        onClick={() => scrollToSection('home')}
+        className="flex items-center space-x-2 group">
+        <div className="p-2 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-colors">
+          <Code2 className="w-6 h-6 text-teal-400" />
+        </div>
+        <span className="text-xl font-bold text-white">{data.name.split(' ')[0]}</span>
+      </button>
 
-//       {/* Desktop Navigation */}
-//       <div className="hidden md:flex items-center space-x-1">
-//         {navItems.map((item) => (
-//           <button
-//             key={item.id}
-//             onClick={() => scrollToSection(item.id)}
-//             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
-//               ? 'text-teal-400 bg-teal-500/10'
-//               : 'text-slate-300 hover:text-white hover:bg-slate-800'
-//               }`}
-//           >
-//             {item.label}
-//           </button>
-//         ))}
-//       </div>
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center space-x-1">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
+              ? 'text-teal-400 bg-teal-500/10'
+              : 'text-slate-300 hover:text-white hover:bg-slate-800'
+              }`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
 
-//       <div className="hidden md:block">
-//         <Button
-//           onClick={() => scrollToSection('contact')}
-//           className="bg-teal-500 hover:bg-teal-600 text-white"
-//         >
-//           Get In Touch
-//         </Button>
-//       </div>
+      <div className="hidden md:block">
+        <Button
+          onClick={() => scrollToSection('contact')}
+          className="bg-teal-500 hover:bg-teal-600 text-white"
+        >
+          Get In Touch
+        </Button>
+      </div>
 
-//       {/* Mobile Menu Button */}
-//       <button
-//         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-//         className="md:hidden p-2 text-slate-300 hover:text-white"
-//       >
-//         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-//       </button>
-//     </div>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="md:hidden p-2 text-slate-300 hover:text-white"
+      >
+        {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+    </div>
 
-//         {/* Mobile Navigation */ }
-//   {
-//     isMobileMenuOpen && (
-//       <div className="md:hidden mt-4 py-4 border-t border-slate-800">
-//         <div className="flex flex-col space-y-2">
-//           {navItems.map((item) => (
-//             <button
-//               key={item.id}
-//               onClick={() => scrollToSection(item.id)}
-//               className={`px-4 py-2 rounded-lg text-left font-medium transition-all ${activeSection === item.id
-//                 ? 'text-teal-400 bg-teal-500/10'
-//                 : 'text-slate-300 hover:text-white hover:bg-slate-800'
-//                 }`}
-//             >
-//               {item.label}
-//             </button>
-//           ))}
-//           <Button
-//             onClick={() => scrollToSection('contact')}
-//             className="bg-teal-500 hover:bg-teal-600 text-white w-full mt-2"
-//           >
-//             Get In Touch
-//           </Button>
-//         </div>
-//       </div>
-//     )
-//   }
-//       </nav >
-//     </header >
-//   );
-// };
+        {/* Mobile Navigation */ }
+  {
+    isMobileMenuOpen && (
+      <div className="md:hidden mt-4 py-4 border-t border-slate-800">
+        <div className="flex flex-col space-y-2">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`px-4 py-2 rounded-lg text-left font-medium transition-all ${activeSection === item.id
+                ? 'text-teal-400 bg-teal-500/10'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                }`}
+            >
+              {item.label}
+            </button>
+          ))}
+          <Button
+            onClick={() => scrollToSection('contact')}
+            className="bg-teal-500 hover:bg-teal-600 text-white w-full mt-2"
+          >
+            Get In Touch
+          </Button>
+        </div>
+      </div>
+    )
+  }
+      </nav >
+    </header >
+  );
+};
 
-// export default Header;
-// 
+export default Header;
