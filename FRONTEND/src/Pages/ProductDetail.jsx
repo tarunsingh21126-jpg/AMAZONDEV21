@@ -183,7 +183,7 @@ function ProductDetail() {
   
   const handleAddToCart = () => {
     if(!localStorage.getItem("access_token")){
-      window.location.href = "/login";
+      window.location.href = "/Login";
       return;
     }
     addToCart(product.id);
