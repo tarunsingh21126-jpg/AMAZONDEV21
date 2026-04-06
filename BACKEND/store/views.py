@@ -1,5 +1,9 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowedAny
+from .serializers import RegisterSerializer, UserSerializer
+from django.contrib.auth.models import User
+from rest_framework import status
 from .models import Category,Product,Cart, CartItem, Order, OrderItem
 from .serializers import CategorySerializer, ProductSerializer, CartSerializer, CartItemSerializer
 
@@ -112,3 +116,12 @@ def create_order(request):
     
     except Exception as e:
         return Response({'error':str(e)}, status=500)
+
+@api_view(['POST'])
+@permission_classes([isAuthenticated])
+def register_view(request):
+    serializer = RegisterSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        return Response({"message":"USER CREATED SUCESSFULLY"} status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
