@@ -11,7 +11,7 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUP";
 import PrivateRouter from "./Components/PrivateRouter";
 import LoginSignup from "./Pages/LoginSignup";
-// import Portfolio from "./Pages/Portfolio";
+//import Portfolio from "./Pages/Portfolio";
    export default function App() {
      return (
       <CartProvider>
