@@ -19,7 +19,7 @@ body {
 * {
   box-sizing: border-box;
 }
-
+/* 
 *{
     margin: 0;
     padding: 0;
@@ -54,7 +54,7 @@ body {
 .border:hover{
     border: 2px solid white
 }
-/**box2**/
+
 .ad-fst{
     color: #ebe0e0;
     font-size: 0.85rem;
@@ -68,7 +68,7 @@ body {
     display: flex;
     align-items: center;
 }
-/**box3**/
+
 .nav-search{
     display: flex;
     justify-content: space-evenly;
@@ -103,7 +103,7 @@ body {
 .nav-search:hover{
         border:2px solid orange
 }
-/**box4**/
+
    .nav-signing a {
     text-decoration: none;
     color: white;
@@ -114,7 +114,7 @@ body {
     text-decoration: underline;
 }
 
-/**box5**/
+
 span{
     font-size: 0.7rem;
 }
@@ -122,16 +122,16 @@ span{
     font-size: 0.8rem;
     font-weight: 700;
 }
-/**box6**/
+
 .nav-cart i {
      font-size: 30px;
 }
 .nav-cart{
     font-size: 0.85rem;
     font-weight: 700;
-}
+} 
 /**panel**/
-.panel{
+/* .panel{
     height: 40px;
     background-color: #222f3d;
     color: white;
@@ -401,4 +401,4 @@ ul{
             cursor: pointer;
             transition: flex 0.5s ease;
             overflow: hidden;
-        }
+}
