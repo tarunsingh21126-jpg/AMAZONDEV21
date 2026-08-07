@@ -9,9 +9,15 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
         fields = '__all__'
+    def get_image(self, obj):
+        if obj.image:
+            return obj.image.url
+        return None
       
 class CartItemSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(source='product.name', read_only=True)
