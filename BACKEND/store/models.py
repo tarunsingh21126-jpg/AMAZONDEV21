@@ -36,6 +36,10 @@ class Order(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     total_amount =models.DecimalField(max_digits=10, decimal_places=2)
     created_at =models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    payment_method = models.CharField(max_length=20, default="COD")
 
     def __str__(self):
         return f"Order {self.id}"

@@ -101,6 +101,10 @@ def create_order(request):
         order = Order.objects.create(
             user = request.user,
             total_amount = total,
+            name=name,
+            address=address,
+            phone=phone,
+            payment_method=payment_method,
         )
 
         for item in cart.items.all():
