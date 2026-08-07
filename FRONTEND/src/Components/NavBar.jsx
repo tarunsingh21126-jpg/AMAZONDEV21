@@ -47,7 +47,7 @@ function NavBar() {
                         <span>EN</span>
                         <FiChevronDown />
                     </div>
-                    <Link to="/" className="flex items-center gap-1 no-underline">
+                    <Link to="/LOGIN" className="flex items-center gap-1 no-underline">
                         <FiUser /> Login
                     </Link>
                     <Link to="/" className="flex items-center gap-1 no-underline">

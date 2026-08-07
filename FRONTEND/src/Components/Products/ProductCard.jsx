@@ -136,7 +136,11 @@ function ProductCard({ product }) {
         </div>
 
         <img
-          src={`${BASEURL}${product.image}`}
+          src={
+            product.image.startsWith("http")
+              ? product.image
+              : `${BASEURL}${product.image}`
+          }
           alt={product.name}
           className="w-full h-56 object-cover group-hover:scale-105 transition duration-300" />
         <div className="p-4 space-y-2">

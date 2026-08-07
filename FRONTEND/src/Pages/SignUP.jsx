@@ -6,6 +6,7 @@ const SignUp = () => {
         username: "",
         email: "",
         password: "",
+        password2: ""
     });
 
     const [msg, setMsg] = useState("");
@@ -19,12 +20,46 @@ const SignUp = () => {
         });
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setMsg("");
+
+    //     try {
+    //         const response = await fetch(`${BASE}/api/register/`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(form),
+    //         });
+
+    //         const data = await response.json();
+
+    //         if (res.ok) {
+    //             saveToken(data);
+    //             setMsg("Login successful! Redirecting...");
+    //             setTimeout(() => {
+    //                 navigate("/login");
+    //             }, 1200);
+    //         } else {
+    //             setMsg(data.username || data.password || JSON.stringify(data));
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //         setMsg("An error occurred. Please try again later.");
+    //     }
+    // };
+    const saveToken = (data) => {
+        localStorage.setItem("access", data.access);
+        localStorage.setItem("refresh", data.refresh);
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMsg("");
 
         try {
-            const response = await fetch(`${BASE}/api/register/`, {
+            // Register user
+            const registerResponse = await fetch(`${BASE}/api/register/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,20 +67,50 @@ const SignUp = () => {
                 body: JSON.stringify(form),
             });
 
-            const data = await response.json();
+            const registerData = await registerResponse.json();
 
-            if (res.ok) {
-                saveToken(data);
-                setMsg("Login successful! Redirecting...");
+            if (!registerResponse.ok) {
+                setMsg(
+                    registerData.username ||
+                    registerData.email ||
+                    registerData.password ||
+                    registerData.password2 ||
+                    JSON.stringify(registerData)
+                );
+                return;
+            }
+
+            // Automatically login
+            const loginResponse = await fetch(`${BASE}/api/token/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: form.username,
+                    password: form.password,
+                }),
+            });
+
+            const loginData = await loginResponse.json();
+
+            if (loginResponse.ok) {
+                saveToken(loginData);
+                setMsg("Account created successfully!");
+
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
+            } else {
+                setMsg("Account created. Please login.");
                 setTimeout(() => {
                     navigate("/login");
-                }, 1200);
-            } else {
-                setMsg(data.username || data.password || JSON.stringify(data));
+                }, 1000);
             }
+
         } catch (error) {
             console.error(error);
-            setMsg("An error occurred. Please try again later.");
+            setMsg("Something went wrong.");
         }
     };
 
@@ -88,10 +153,10 @@ const SignUp = () => {
                     />
 
                     <input
-                        type="C-password"
-                        name="C-password"
-                        placeholder="C-Password"
-                        value={form.password}
+                        type="password"
+                        name="password2"
+                        placeholder="Confirm-Password"
+                        value={form.password2}
                         onChange={handleChange}
                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
