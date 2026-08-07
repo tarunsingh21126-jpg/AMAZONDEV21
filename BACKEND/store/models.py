@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model): 
     name = models.CharField(max_length=100,unique=True)
@@ -15,7 +16,11 @@ class Product(models.Model):
     Category =models.ForeignKey(Category,on_delete=models.CASCADE,related_name='products')
     description =models.TextField(blank=True)
     price= models.DecimalField(max_digits=10, decimal_places=2)
-    image =models.ImageField(upload_to='products/',blank=True,null=True)
+    image = CloudinaryField(
+        "image",
+        blank=True,
+        null=True
+    )
     created_at =models.DateTimeField(auto_now_add=True)
     badge =models.CharField(max_length=100)
     rating= models.DecimalField(max_digits=10, decimal_places=2)
